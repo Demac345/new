@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dez Threads - Premium Fashion</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      /* Promo Bar */
+      .promo-bar {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: #f0f0f0;
+        text-align: center;
+        padding: 12px;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+
+      /* Navbar */
+      #nav-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      #logo {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      #logo h1 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin: 0;
+      }
+
+      #logo h3 {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #888;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      #nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      #nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      #nav-links a:hover {
+        color: #d4a574;
+      }
+
+      #nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #d4a574;
+        transition: width 0.3s ease;
+      }
+
+      #nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .icons {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .icons i {
+        font-size: 18px;
+        cursor: pointer;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .icons i:hover {
+        color: #d4a574;
+        transform: scale(1.1);
+      }
+
+      /* Hero Banner */
+      #main-hero-banner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 80px 60px;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        min-height: 600px;
+      }
+
+      #hi {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #hi > p:first-child {
+        color: #d4a574;
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      #hi h1 {
+        font-size: 56px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: -2px;
+      }
+
+      #hi > p:last-of-type {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+        max-width: 500px;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      #sn,
+      #vc {
+        padding: 15px 35px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 4px;
+      }
+
+      #sn {
+        background: #1a1a1a;
+        color: white;
+        box-shadow: 0 4px 15px rgba(26, 26, 26, 0.2);
+      }
+
+      #sn:hover {
+        background: #d4a574;
+        color: #1a1a1a;
+        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+        transform: translateY(-2px);
+      }
+
+      #vc {
+        background: transparent;
+        color: #1a1a1a;
+        border: 2px solid #1a1a1a;
+      }
+
+      #vc:hover {
+        background: #1a1a1a;
+        color: white;
+        border-color: #1a1a1a;
+      }
+
+      #main-hero-banner > div:last-child {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      #main-hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      /* Features Section */
+      #means {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px;
+        background: white;
+      }
+
+      .items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .items:hover {
+        transform: translateY(-5px);
+      }
+
+      .items > div:first-child {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5f5f5;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .items:hover > div:first-child {
+        background: #d4a574;
+      }
+
+      .items svg {
+        height: 45px;
+        width: 45px;
+        color: #1a1a1a;
+        transition: color 0.3s ease;
+      }
+
+      .items:hover svg {
+        color: white;
+      }
+
+      .items label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .items b {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .items label {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Categories Section */
+      #body {
+        padding: 60px;
+        background: #fafafa;
+      }
+
+      #categories {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      #categories > div:first-child {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      #categories h2 {
+        font-size: 42px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .images {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .images > div {
+        position: relative;
+        height: 350px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .images > div::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .images > div:hover::before {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .images > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        color: white;
+      }
+
+      .images > div h1 {
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        z-index: 3;
+        position: relative;
+      }
+
+      .images > div button {
+        background: white;
+        color: #1a1a1a;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        z-index: 3;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .images > div button:hover {
+        background: #d4a574;
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+      }
+
+      /* Footer */
+      #footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 40px 60px;
+        text-align: center;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="promo-bar">
+      FREE DELIVERY ON ORDERS ABOVE $100 | PREMIUM QUALITY GUARANTEED
+    </div>
+
+    <div id="nav-bar">
+      <div id="logo">
+        <h1>Dez</h1>
+        <h3>threads</h3>
+      </div>
+      <div id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-regular fa-user"></i>
+        <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+    </div>
+
+    <div id="main-hero-banner">
+      <div id="hi">
+        <p>new . summer 2024</p>
+        <h1>STYLE THAT SPEAKS</h1>
+        <p>
+          Elevated essentials. Premium quality crafted for your everyday moments
+          with exceptional attention to detail.
+        </p>
+        <div class="button-group">
+          <button id="sn">Shop Now</button>
+          <button id="vc">View Collections</button>
+        </div>
+      </div>
+      <div>
+        <img src="images/hero2.jpg" alt="Summer collection hero image" />
+      </div>
+    </div>
+
+    <div id="means">
+      <div class="items">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M96 144C87.2 144 80 151.2 80 160L80 448C80 456.8 87.2 464 96 464L99.3 464C109.7 427.1 143.7 400 184 400C224.3 400 258.2 427.1 268.7 464L371.3 464C376.2 446.6 386.4 431.3 400 420.1L400 160C400 151.2 392.8 144 384 144L96 144zM99.3 512L96 512C60.7 512 32 483.3 32 448L32 160C32 124.7 60.7 96 96 96L384 96C419.3 96 448 124.7 448 160L448 192L503.4 192C520.4 192 536.7 198.7 548.7 210.7L589.3 251.3C601.3 263.3 608 279.6 608 296.6L608 448C608 483.3 579.3 512 544 512L540.7 512C530.3 548.9 496.3 576 456 576C415.7 576 381.8 548.9 371.3 512L268.7 512C258.3 548.9 224.3 576 184 576C143.7 576 109.8 548.9 99.3 512zM448 320L560 320L560 296.6C560 292.4 558.3 288.3 555.3 285.3L514.7 244.7C511.7 241.7 507.6 240 503.4 240L448 240L448 320zM448 368L448 400.4C450.6 400.2 453.3 400 456 400C496.3 400 530.2 427.1 540.7 464L544 464C552.8 464 560 456.8 560 448L560 368L448 368zM184 528C206.1 528 224 510.1 224 488C224 465.9 206.1 448 184 448C161.9 448 144 465.9 144 488C144 510.1 161.9 528 184 528zM456 528C478.1 528 496 510.1 496 488C496 465.9 478.1 448 456 448C433.9 448 416 465.9 416 488C416 510.1 433.9 528 456 528z"
+            />
+          </svg>
+        </div>
+        <label><b>Free Shipping</b><br />on orders above $100</label>
+      </div>
+
+      <div class="items">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M341.9 38.1C328.5 29.9 311.6 29.9 298.2 38.1C273.8 53 258.7 57 230.1 56.4C214.4 56 199.8 64.5 192.2 78.3C178.5 103.4 167.4 114.5 142.3 128.2C128.5 135.7 120.1 150.4 120.4 166.1C121.1 194.7 117 209.8 102.1 234.2C93.9 247.6 93.9 264.5 102.1 277.9C117 302.3 121 317.4 120.4 346C120 361.7 128.5 376.3 142.3 383.9C164.4 396 175.6 406 187.4 425.4L138.7 522.5C132.8 534.4 137.6 548.8 149.4 554.7L235.4 597.7C246.9 603.4 260.9 599.1 267.1 587.9L319.9 492.8L372.7 587.9C378.9 599.1 392.9 603.5 404.4 597.7L490.4 554.7C502.3 548.8 507.1 534.4 501.1 522.5L452.5 425.3C464.2 405.9 475.5 395.9 497.6 383.8C511.4 376.3 519.8 361.6 519.5 345.9C518.8 317.3 522.9 302.2 537.8 277.8C546 264.4 546 247.5 537.8 234.1C522.9 209.7 518.9 194.6 519.5 166C519.9 150.3 511.4 135.7 497.6 128.1C472.5 114.4 461.4 103.3 447.7 78.2C440.2 64.4 425.5 56 409.8 56.3C381.2 57 366.1 52.9 341.7 38zM320 160C373 160 416 203 416 256C416 309 373 352 320 352C267 352 224 309 224 256C224 203 267 160 320 160z"
+            />
+          </svg>
+        </div>
+        <label><b>Premium Quality</b><br />crafted to perfection</label>
+      </div>
+
+      <div class="items">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M534.6 182.6C547.1 170.1 547.1 149.8 534.6 137.3L470.6 73.3C461.4 64.1 447.7 61.4 435.7 66.4C423.7 71.4 416 83.1 416 96L416 128L256 128C150 128 64 214 64 320C64 337.7 78.3 352 96 352C113.7 352 128 337.7 128 320C128 249.3 185.3 192 256 192L416 192L416 224C416 236.9 423.8 248.6 435.8 253.6C447.8 258.6 461.5 255.8 470.7 246.7L534.7 182.7zM105.4 457.4C92.9 469.9 92.9 490.2 105.4 502.7L169.4 566.7C178.6 575.9 192.3 578.6 204.3 573.6C216.3 568.6 224 556.9 224 544L224 512L384 512C490 512 576 426 576 320C576 302.3 561.7 288 544 288C526.3 288 512 302.3 512 320C512 390.7 454.7 448 384 448L224 448L224 416C224 403.1 216.2 391.4 204.2 386.4C192.2 381.4 178.5 384.2 169.3 393.3L105.3 457.3z"
+            />
+          </svg>
+        </div>
+        <label><b>Easy Returns</b><br />within 30 days</label>
+      </div>
+
+      <div class="items">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z"
+            />
+          </svg>
+        </div>
+        <label><b>Secure Checkout</b><br />protected transactions</label>
+      </div>
+    </div>
+
+    <div id="body">
+      <div id="categories">
+        <div>
+          <h2>Shop by Category</h2>
+        </div>
+        <div class="images">
+          <div
+            style="
+              background-image:
+                linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url(&quot;images/black.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          >
+            <h1>HOODIES</h1>
+            <button>SHOP NOW</button>
+          </div>
+          <div
+            style="
+              background-image:
+                linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url(&quot;images/guy.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          >
+            <h1>T-SHIRTS</h1>
+            <button>SHOP NOW</button>
+          </div>
+          <div
+            style="
+              background-image:
+                linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url(&quot;images/black.jpg&quot;);
+              background-size: cover;
+              background-position: center;
+            "
+          >
+            <h1>ACCESSORIES</h1>
+            <button>SHOP NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>
+        &copy; 2024 Dez Threads. All rights reserved. | Premium Fashion for
+        Everyday Living
+      </p>
+    </div>
+  </body>
+</html>
