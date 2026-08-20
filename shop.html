@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Dez Threads</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="nav-bar">
+      <div id="logo">
+        <h1>Dez</h1>
+        <h3>threads</h3>
+      </div>
+      <div id="nav-links">
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="signup.html">sign up</a>
+      </div>
+      <div class="icons">
+        <button class="icon-button" id="search-button" aria-label="Search products"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <a class="icon-button" href="signup.html" aria-label="Your account"><i class="fa-regular fa-user"></i></a>
+        <button class="icon-button bag-button" id="bag-button" aria-label="Open shopping bag"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count">0</span></button>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <main class="shop-page">
+      <section class="shop-intro">
+        <p class="eyebrow">The Dez edit / 2026</p>
+        <h1>Everyday pieces,<br><em>done differently.</em></h1>
+        <p class="shop-description">Considered layers and relaxed essentials made to move with you. Built in small runs, designed for a long rotation.</p>
+      </section>
+      <section class="shop-toolbar" aria-label="Product filters">
+        <nav id="category-filters" class="category-filters" aria-label="Categories">
+          <button class="filter-button is-active" data-category="all">All pieces</button>
+          <button class="filter-button" data-category="shirts">Shirts</button>
+          <button class="filter-button" data-category="hoodies">Hoodies</button>
+          <button class="filter-button" data-category="trousers">Trousers</button>
+          <button class="filter-button" data-category="caps">Caps</button>
+        </nav>
+        <label class="sort-control">Sort by
+          <select id="sort-products" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+          </select>
+        </label>
+      </section>
+      <section id="product-grid" class="product-grid" aria-live="polite"></section>
+      <p id="empty-state" class="empty-state" hidden>No pieces found. Try another search.</p>
+    </main>
+
+    <dialog id="quick-view" class="quick-view">
+      <button class="modal-close" id="modal-close" aria-label="Close quick view">&times;</button>
+      <div id="quick-view-content"></div>
+    </dialog>
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
+      <div class="drawer-header"><div><p class="eyebrow">Your edit</p><h2>Shopping bag</h2></div><button class="modal-close" id="drawer-close" aria-label="Close shopping bag">&times;</button></div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer"><div><span>Subtotal</span><strong id="cart-total">$0.00</strong></div><button class="checkout-button" type="button">Checkout <i class="fa-solid fa-arrow-right"></i></button></div>
+    </aside>
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <div id="search-panel" class="search-panel" aria-hidden="true"><label for="product-search">Search the collection</label><div><input id="product-search" type="search" placeholder="Try “cargo” or “cap”"><button id="search-close" aria-label="Close search">&times;</button></div></div>
+
+    <script src="shop.js" defer></script>
+</body>
+</html>

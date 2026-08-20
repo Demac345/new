@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Dez Threads</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+        .signup-body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f1ea 0%, #f9f9f9 35%, #f1f1f1 100%);
+            color: #1a1a1a;
+        }
+
+        .signup-page {
+            width: min(1100px, 90%);
+            margin: 60px auto;
+        }
+
+        .signup-panel {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(26, 26, 26, 0.06);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(26, 26, 26, 0.12);
+        }
+
+        .signup-copy {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2f2f2f 50%, #d4a574 130%);
+            padding: 60px 45px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .signup-copy h1 {
+            font-size: clamp(2.3rem, 4vw, 3.5rem);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .signup-copy p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 420px;
+        }
+
+        .perk-list {
+            list-style: none;
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .perk-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.98rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .perk-list i {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.2);
+            color: #f7d7ad;
+            font-size: 0.8rem;
+        }
+
+        .signup-card {
+            background: #ffffff;
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .signup-card h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .signup-card > p {
+            font-size: 0.96rem;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field-group label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #444;
+        }
+
+        .field-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            background: #fafafa;
+            font-size: 1rem;
+            color: #1a1a1a;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .field-group input:focus {
+            outline: none;
+            border-color: #d4a574;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.12);
+        }
+
+        .signup-btn,
+        .secondary-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: #fff;
+            margin-top: 8px;
+            box-shadow: 0 12px 24px rgba(26, 26, 26, 0.15);
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px rgba(26, 26, 26, 0.2);
+            background: linear-gradient(135deg, #d4a574 0%, #c89a63 100%);
+            color: #1a1a1a;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0 4px;
+            color: #999;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ececec;
+        }
+
+        .secondary-btn {
+            background: #f7f3ef;
+            color: #1a1a1a;
+            border: 1px solid #ebded0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .secondary-btn:hover {
+            background: #f0e6dc;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .login-link a {
+            color: #1a1a1a;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            color: #d4a574;
+        }
+
+        @media (max-width: 860px) {
+            .signup-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-copy {
+                padding: 40px 25px;
+            }
+
+            .signup-card {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body class="signup-body">
+    <div id="nav-bar">
+      <div id="logo">
+        <h1>Dez</h1>
+        <h3>threads</h3>
+      </div>
+      <div id="nav-links">
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="signup.html">sign up</a>
+      </div>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-regular fa-user"></i>
+        <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <main class="signup-page">
+        <section class="signup-panel">
+            <div class="signup-copy">
+                <p class="eyebrow">Welcome to Dez Threads</p>
+                <h1>Create your account</h1>
+                <p>Join our community for early access to new arrivals, exclusive promotions, and premium styling inspiration.</p>
+
+                <ul class="perk-list">
+                    <li><i class="fa-solid fa-check"></i> Early access to limited drops</li>
+                    <li><i class="fa-solid fa-check"></i> Members-only discounts</li>
+                    <li><i class="fa-solid fa-check"></i> Fast checkout and saved favourites</li>
+                </ul>
+            </div>
+
+            <div class="signup-card">
+                <h2>Sign Up</h2>
+                <p>Start shopping with us today.</p>
+
+                <form action="submit.php" method="post">
+                    <div class="field-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    </div>
+
+                    <button type="submit" class="signup-btn">Create account</button>
+
+                    <div class="divider">or</div>
+
+                    <button type="button" class="secondary-btn">
+                        <i class="fa-brands fa-google"></i>
+                        Continue with Google
+                    </button>
+
+                    <p class="login-link">Already have an account? <a href="#">Log in</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
