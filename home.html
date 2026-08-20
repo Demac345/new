@@ -8,384 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: #f9f9f9;
-      }
-
-      /* Promo Bar */
-      .promo-bar {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-        color: #f0f0f0;
-        text-align: center;
-        padding: 12px;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-        font-weight: 500;
-      }
-
-      /* Navbar */
-      #nav-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 60px;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      #logo {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-
-      #logo h1 {
-        font-size: 32px;
-        font-weight: 700;
-        letter-spacing: -1px;
-        margin: 0;
-      }
-
-      #logo h3 {
-        font-size: 11px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #888;
-        margin: 0;
-        font-weight: 600;
-      }
-
-      #nav-links {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-      }
-
-      #nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      #nav-links a:hover {
-        color: #d4a574;
-      }
-
-      #nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #d4a574;
-        transition: width 0.3s ease;
-      }
-
-      #nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .icons {
-        display: flex;
-        gap: 25px;
-        align-items: center;
-      }
-
-      .icons i {
-        font-size: 18px;
-        cursor: pointer;
-        color: #333;
-        transition: all 0.3s ease;
-      }
-
-      .icons i:hover {
-        color: #d4a574;
-        transform: scale(1.1);
-      }
-
-      /* Hero Banner */
-      #main-hero-banner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-        padding: 80px 60px;
-        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-        min-height: 600px;
-      }
-
-      #hi {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      #hi > p:first-child {
-        color: #d4a574;
-        font-size: 13px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        font-weight: 600;
-      }
-
-      #hi h1 {
-        font-size: 56px;
-        line-height: 1.2;
-        font-weight: 700;
-        color: #1a1a1a;
-        letter-spacing: -2px;
-      }
-
-      #hi > p:last-of-type {
-        color: #666;
-        font-size: 16px;
-        line-height: 1.8;
-        max-width: 500px;
-      }
-
-      .button-group {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      #sn,
-      #vc {
-        padding: 15px 35px;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        border-radius: 4px;
-      }
-
-      #sn {
-        background: #1a1a1a;
-        color: white;
-        box-shadow: 0 4px 15px rgba(26, 26, 26, 0.2);
-      }
-
-      #sn:hover {
-        background: #d4a574;
-        color: #1a1a1a;
-        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
-        transform: translateY(-2px);
-      }
-
-      #vc {
-        background: transparent;
-        color: #1a1a1a;
-        border: 2px solid #1a1a1a;
-      }
-
-      #vc:hover {
-        background: #1a1a1a;
-        color: white;
-        border-color: #1a1a1a;
-      }
-
-      #main-hero-banner > div:last-child {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-      }
-
-      #main-hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-
-      /* Features Section */
-      #means {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        padding: 60px;
-        background: white;
-      }
-
-      .items {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 20px;
-        transition: all 0.3s ease;
-      }
-
-      .items:hover {
-        transform: translateY(-5px);
-      }
-
-      .items > div:first-child {
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f5f5f5;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-      }
-
-      .items:hover > div:first-child {
-        background: #d4a574;
-      }
-
-      .items svg {
-        height: 45px;
-        width: 45px;
-        color: #1a1a1a;
-        transition: color 0.3s ease;
-      }
-
-      .items:hover svg {
-        color: white;
-      }
-
-      .items label {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .items b {
-        font-size: 16px;
-        font-weight: 600;
-        color: #1a1a1a;
-      }
-
-      .items label {
-        color: #666;
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      /* Categories Section */
-      #body {
-        padding: 60px;
-        background: #fafafa;
-      }
-
-      #categories {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      #categories > div:first-child {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      #categories h2 {
-        font-size: 42px;
-        font-weight: 700;
-        color: #1a1a1a;
-        text-transform: uppercase;
-        letter-spacing: -1px;
-      }
-
-      .images {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      }
-
-      .images > div {
-        position: relative;
-        height: 350px;
-        border-radius: 8px;
-        overflow: hidden;
-        cursor: pointer;
-      }
-
-      .images > div::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.2);
-        z-index: 2;
-        transition: all 0.3s ease;
-      }
-
-      .images > div:hover::before {
-        background: rgba(0, 0, 0, 0.4);
-      }
-
-      .images > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 20px;
-        color: white;
-      }
-
-      .images > div h1 {
-        font-size: 36px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        z-index: 3;
-        position: relative;
-      }
-
-      .images > div button {
-        background: white;
-        color: #1a1a1a;
-        padding: 12px 28px;
-        border: none;
-        border-radius: 4px;
-        font-weight: 600;
-        font-size: 13px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-        z-index: 3;
-        position: relative;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .images > div button:hover {
-        background: #d4a574;
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
-      }
-
-      /* Footer */
-      #footer {
-        background: #1a1a1a;
-        color: white;
-        padding: 40px 60px;
-        text-align: center;
-        font-size: 14px;
-      }
-    </style>
+   <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="promo-bar">
@@ -398,15 +21,20 @@
         <h3>threads</h3>
       </div>
       <div id="nav-links">
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="signup.html">sign up</a>
       </div>
       <div class="icons">
         <i class="fa-solid fa-magnifying-glass"></i>
         <i class="fa-regular fa-user"></i>
         <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
 
@@ -526,5 +154,23 @@
         Everyday Living
       </p>
     </div>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when a link is clicked
+      const links = navLinks.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('active');
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Dez Threads</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header id="nav-bar">
+        <a id="logo" href="home.html" aria-label="Dez Threads home">
+            <h1>Dez</h1>
+            <h3>threads</h3>
+        </a>
+        <nav id="nav-links" aria-label="Primary navigation">
+            <a href="home.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a class="active-page" href="about.html">About</a>
+            <a href="signup.html">Sign up</a>
+        </nav>
+        <div class="icons">
+            <a class="about-icon" href="shop.html" aria-label="Shop"><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="about-page">
+        <section class="about-hero">
+            <div class="about-hero-copy">
+                <p class="eyebrow">A uniform for the in-between</p>
+                <h1>Clothes with<br><em>somewhere to go.</em></h1>
+                <p class="about-lede">Dez Threads makes considered everyday pieces for people who are always becoming. Easy silhouettes, useful details, and a point of view that does not need to shout.</p>
+            </div>
+            <div class="about-hero-image">
+                <img src="images/hero2.jpg" alt="A model wearing a Dez Threads outfit">
+                <span>Dez / Issue 01</span>
+            </div>
+        </section>
+
+        <section class="about-manifesto">
+            <p class="eyebrow">Our approach</p>
+            <h2>Less noise.<br><em>More character.</em></h2>
+            <div class="manifesto-copy">
+                <p>We started Dez with a simple question: what would you reach for if everything in your wardrobe had to earn its place?</p>
+                <p>The answer is a small, intentional collection. Pieces that feel good on the first wear, get better with time, and leave room for the person wearing them to bring the energy.</p>
+            </div>
+        </section>
+
+        <section class="about-feature">
+            <div class="feature-image feature-image-tall"><img src="images/guy.jpg" alt="Model wearing a relaxed Dez Threads look"></div>
+            <div class="feature-note"><span class="feature-number">01</span><div><p class="eyebrow">Designed to repeat</p><h2>The best piece in your closet is the one you keep choosing.</h2><p>Relaxed proportions, tactile fabrics, and details that show up when you need them. Nothing precious. Everything considered.</p></div></div>
+            <div class="feature-image feature-image-small"><img src="images/cargo.jpg" alt="Close view of a utility cargo garment"></div>
+        </section>
+
+        <section class="values-section">
+            <div class="values-heading"><p class="eyebrow">What we believe</p><h2>Good clothes<br><em>hold a feeling.</em></h2></div>
+            <div class="values-list">
+                <article><span>01</span><h3>Useful is beautiful</h3><p>Pockets, weight, movement, and fit are part of the design, not afterthoughts.</p></article>
+                <article><span>02</span><h3>Small runs, longer lives</h3><p>We make with intention and keep the collection close enough to know every piece.</p></article>
+                <article><span>03</span><h3>Room for your version</h3><p>Our clothes are a starting point. The way you wear them is where they become yours.</p></article>
+            </div>
+        </section>
+
+        <section class="about-cta">
+            <p class="eyebrow">Start with one good thing</p>
+            <h2>Meet the collection.</h2>
+            <a class="about-cta-link" href="shop.html">Shop Dez Threads <i class="fa-solid fa-arrow-right"></i></a>
+        </section>
+    </main>
+
+    <footer class="about-footer"><span>Dez Threads</span><span>Made for the long way around.</span><span>© 2026</span></footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    </script>
+</body>
+</html>
